@@ -61,5 +61,21 @@ namespace FoodTracker.Services
         {
             return _db.Meals.AnyAsync(m => m.Id == id, ct);
         }
+
+        // Additional methods to support dashboard statistics
+
+        public Task<List<Meal>> GetThisWeeksMealsAsync(CancellationToken ct = default)
+        {
+            var weekStartsOn = DayOfWeek.Monday;
+            var now = DateTime.Now;
+            int diff = (7 + (now.DayOfWeek - weekStartsOn)) % 7;
+            var startOfWeek = now.Date.AddDays(-diff);
+            var startOfNextWeek = startOfWeek.AddDays(7);
+
+            return _db.Meals
+                .AsNoTracking()
+                .Where(m => m.DateConsumed >= startOfWeek && m.DateConsumed < startOfNextWeek)
+                .ToListAsync(ct);
+        }
     }
 }

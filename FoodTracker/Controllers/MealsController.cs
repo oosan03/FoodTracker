@@ -115,5 +115,14 @@ namespace FoodTracker.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // Start Dashboard statistic requests here
+
+        // Get: Meals/Dashboard
+        public async Task<IActionResult> Dashboard(CancellationToken ct)
+        {
+            var items = await _mealService.GetThisWeeksMealsAsync(ct);
+            return View(items);
+        }
+
     }
 }
