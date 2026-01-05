@@ -1,83 +1,48 @@
 ﻿@model IEnumerable<FoodTracker.Models.Meal>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Meals";
 }
 
-<h1>Index</h1>
+<h1 class="display-3 fw-normal pt-2">Meals <span id="date-dispay" class="display-6"></span></h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="text-end">
+    <a class="btn btn-dark" asp-action="Create">Create New Entry</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Calories)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fats)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Carbohydrates)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Proteins)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sugars)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Homemade)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Calories)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fats)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Carbohydrates)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proteins)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sugars)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Homemade)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="">
+    @foreach (var item in Model)
+    {
+        <div class="card mb-2">
+            <div class="card-body mb-1 py-3">
+                <h5 class="card-title text-capitalize d-flex align-items-center"
+                    style="border-bottom: 2px double black;">
+                    <span>@item.Name</span>
+                    <span class="ms-2">- @item.Type</span>
+
+                    <span class="ms-auto d-inline-flex gap-1 flex-nowrap pb-1">
+                        <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-warning btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </span>
+                </h5>
+
+
+                <p><strong>Price:</strong> $@item.Price</p> <hr class="my-1" />
+                <p><strong>Calories:</strong> @item.Calories</p> <hr class="my-1" />
+                <p><strong>Protein:</strong> @item.Proteins</p> <hr class="my-1" />
+                <p><strong>Sugars:</strong> @item.Sugars</p> <hr class="my-1" />
+                <p><strong>Fats:</strong> @item.Fats</p> <hr class="my-1" />
+                <p><strong>Carbohydrates:</strong> @item.Carbohydrates</p> <hr class="my-1" />
+                
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    const today = new Date();
+    const formattedDate = today.toDateString();
+    document.getElementById("date-dispay").innerText = `- ${formattedDate}`;
+</script>
+

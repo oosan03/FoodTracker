@@ -22,6 +22,7 @@ namespace FoodTracker.Models
         [Range(0, 10000)]
         public decimal Price { get; set; }
         public bool Homemade { get; set; }
+        public DateTime DateConsumed { get; set; }
 
 
     }

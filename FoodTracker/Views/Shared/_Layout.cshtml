@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FoodTracker</title>
+    <title>@ViewData["Title"] - Food Tracker</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FoodTracker.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-0">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Meals" asp-action="Index">FoodTracker</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Meals" asp-action="Index">Food Tracker</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,20 +21,20 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Meals" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Meals" asp-action="Index">Home</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3 table-responsive">
+    <div class="container bg-dark main-container px-0 flex-grow-1 d-flex">
+        <main role="main" class="flex-grow-1 pb-3 table-responsive bg-dark-subtle">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top app-footer text-light bg-dark">
         <div class="container">
             &copy; 2026 - FoodTracker
         </div>
