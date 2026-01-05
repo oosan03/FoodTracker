@@ -11,7 +11,6 @@ namespace FoodTracker.Services
         Task<bool> DeleteAsync(int id, CancellationToken ct = default);
         Task<bool> ExistsAsync(int id, CancellationToken ct = default);
 
-
-
-    }
+        Task<List<Meal>> GetThisWeeksMealsAsync(CancellationToken ct = default);
+    } 
 }

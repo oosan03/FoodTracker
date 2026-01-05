@@ -1,0 +1,22 @@
+﻿@model IEnumerable<FoodTracker.Models.Meal>
+
+@{
+    ViewData["Title"] = "Meals";
+}
+
+
+<h1>Dashboard page</h1>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h3>@item.Name (@item.Type)</h3>
+        <p>Date Consumed: @item.DateConsumed.ToShortDateString()</p>
+        <p>Calories: @item.Calories</p>
+        <p>Fats: @item.Fats g</p>
+        <p>Carbohydrates: @item.Carbohydrates g</p>
+        <p>Proteins: @item.Proteins g</p>
+        <p>Sugars: @item.Sugars g</p>
+    </div>
+    <hr />
+}
