@@ -58,3 +58,8 @@ body {
 .card-body p {
     margin-bottom: 0.25rem;
 }
+
+.label-fixed {
+    display: inline-block;
+    width: 70px;
+}

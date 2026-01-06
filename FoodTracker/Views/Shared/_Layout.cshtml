@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/FoodTracker.styles.css" asp-append-version="true" />
 </head>
 <body class="d-flex flex-column min-vh-100">
-    <header>
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-0">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Meals" asp-action="Index">Food Tracker</a>
@@ -21,7 +21,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Meals" asp-action="Index">Dashboard</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Meals" asp-action="Dashboard">Dashboard</a>
                         </li>
                     </ul>
                 </div>
