@@ -63,3 +63,8 @@ body {
     display: inline-block;
     width: 70px;
 }
+
+.bg-custom {
+    background-color: #A8A7AB !important;
+}
+

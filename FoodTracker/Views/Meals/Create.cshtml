@@ -4,35 +4,35 @@
     ViewData["Title"] = "Create";
 }
 
-<h1 class="my-3">Add New Meal</h1>
+<p class="text-center mt-3 pt-4 font-monospace fs-1"><strong>Add New Meal</strong></p>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group my-3">
                 <label asp-for="DateConsumed" class="control-label mx-1 fw-semibold">Date</label>
                 <input type="date" asp-for="DateConsumed" class="form-control" />
                 <span asp-validation-for="DateConsumed" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group my-3">
                 <label asp-for="Name" class="control-label mx-1 fw-semibold"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group my-3">
                 <label asp-for="Calories" class="control-label mx-1 fw-semibold"></label>
                 <input asp-for="Calories" class="form-control" />
                 <span asp-validation-for="Calories" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Proteins" class="control-label mx-1 fw-semibold"></label>
+            <div class="form-group my-3">
+                <label asp-for="Proteins" class="control-label mx-1 fw-semibold">Protein (g)</label>
                 <input asp-for="Proteins" class="form-control" />
                 <span asp-validation-for="Proteins" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Sugars" class="control-label mx-1 fw-semibold"></label>
+            <div class="form-group my-3">
+                <label asp-for="Sugars" class="control-label mx-1 fw-semibold">Sugar (g)</label>
                 <input asp-for="Sugars" class="form-control" />
                 <span asp-validation-for="Sugars" class="text-danger"></span>
             </div><br />
@@ -57,14 +57,14 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <input type="submit" value="Create" class="btn btn-dark" />
             </div>
         </form>
     </div>
 </div>
 <br /><hr />
 <div class="my-3">
-    <a class="btn btn-outline-success" asp-action="Index">Back to List</a>
+    <a class="btn btn-outline-primary" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
