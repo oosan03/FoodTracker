@@ -4,34 +4,38 @@
     ViewData["Title"] = "Meals";
 }
 
-<h1 class="display-3 fw-normal pt-2">Meals <span id="date-dispay" class="display-6"></span></h1>
-
-<p class="text-end">
-    <a class="btn btn-dark" asp-action="Create">Create New Entry</a>
+<p class="text-center mt-4 pt-4 font-monospace fs-1"><strong>Welcome back, Oo San &#x1f44b;</strong></p>
+<p class="text-center mb-4 pb-3">
+<a class="btn btn-dark" asp-action="Create">Create New Entry</a>
 </p>
 
 <div class="">
     @foreach (var item in Model)
     {
         <div class="card mb-2">
-            <div class="card-body mb-1 py-3">
-                <h5 class="card-title text-capitalize d-flex align-items-center"
+            <div class="card-body mb-1 py-1">
+                <h5 class="card-title text-capitalize d-flex align-items-center py-2"
                     style="border-bottom: 2px double black;">
                     <span>@item.Name</span>
                     <span class="ms-2">- @item.Type</span>
 
                     <span class="ms-auto d-inline-flex gap-1 flex-nowrap pb-1">
-                        <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-warning btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </span>
                 </h5>
 
+                <div class="d-flex flex-grow-1 pt-2 pb-0">
+                    <p class="flex-fill text-start"><strong>Price:</strong> $@item.Price</p>
+                    <p class="flex-fill text-start"><strong>Calories:</strong> @item.Calories</p>
+                </div><hr class="mx-0 my-0 px-0 py-0"/>
 
-                <p><strong>Price:</strong> $@item.Price</p> <hr class="my-1" />
-                <p><strong>Calories:</strong> @item.Calories</p> <hr class="my-1" />
-                <p><strong>Protein:</strong> @item.Proteins</p> <hr class="my-1" />
-                <p><strong>Sugars:</strong> @item.Sugars</p> <hr class="my-1" /> <hr class="my-1" />
-                <p><strong>Date:</strong> @item.DateConsumed.ToShortDateString()</p>
+                <div class="d-flex justify-content-evenly flex-grow-1 pt-2 pb-0">
+                    <p class="flex-fill text-start"><strong class="fw-bold">Protein:</strong> @item.Proteins</p>
+                    <p class="flex-fill text-start"><strong class="fw-bold">Sugars:</strong> @item.Sugars</p>
+                </div><hr class="mx-0 my-0 px-0 py-0" />
+
+                <p class="d-flex justify-content-start flex-grow-1 font-monospace fs-6 pt-2"><strong >Date:&ensp;</strong>  @item.DateConsumed.ToShortDateString()</p>
                 
             </div>
         </div>

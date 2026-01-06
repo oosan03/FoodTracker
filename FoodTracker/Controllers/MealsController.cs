@@ -22,9 +22,10 @@ namespace FoodTracker.Controllers
         // GET: Meals
         public async Task<IActionResult> Index(CancellationToken ct)
         {
-            var items = await _mealService.GetAllMealsAsync(ct);
+            var items = await _mealService.GetLastThreeMealsAsync(ct);
             return View(items);
         }
+
 
         // GET: Meals/Details/5
         public async Task<IActionResult> Details(int? id, CancellationToken ct)

@@ -23,6 +23,15 @@ namespace FoodTracker.Services
                 .ToListAsync(ct);
         }
 
+        public Task<List<Meal>> GetLastThreeMealsAsync(CancellationToken ct = default)
+        {
+            return _db.Meals
+                .AsNoTracking()
+                .OrderByDescending(m => m.Id)
+                .Take(3)
+                .ToListAsync(ct);
+        }
+
         public Task<Meal?> GetMealByIdAsync(int id, CancellationToken ct = default)
         {
             return _db.Meals
