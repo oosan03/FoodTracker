@@ -22,7 +22,6 @@
 
                     <span class="ms-auto d-inline-flex gap-1 flex-nowrap pb-1">
                         <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn btn-secondary btn-sm" asp-action="Details" asp-route-id="@item.Id">Details</a>
                         <a class="btn btn-warning btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </span>
                 </h5>
@@ -31,9 +30,7 @@
                 <p><strong>Price:</strong> $@item.Price</p> <hr class="my-1" />
                 <p><strong>Calories:</strong> @item.Calories</p> <hr class="my-1" />
                 <p><strong>Protein:</strong> @item.Proteins</p> <hr class="my-1" />
-                <p><strong>Sugars:</strong> @item.Sugars</p> <hr class="my-1" />
-                <p><strong>Fats:</strong> @item.Fats</p> <hr class="my-1" />
-                <p><strong>Carbohydrates:</strong> @item.Carbohydrates</p> <hr class="my-1" />
+                <p><strong>Sugars:</strong> @item.Sugars</p> <hr class="my-1" /> <hr class="my-1" />
                 <p><strong>Date:</strong> @item.DateConsumed.ToShortDateString()</p>
                 
             </div>
