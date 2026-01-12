@@ -24,6 +24,10 @@ namespace FoodTracker.Models
         public bool Homemade { get; set; }
         public DateTime DateConsumed { get; set; }
 
+        // Foreign Keys: recipeId
+        public int? RecipeId { get; set; }
+
+        public Recipe? Recipe { get; set; }
 
     }
 }

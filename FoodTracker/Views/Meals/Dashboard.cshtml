@@ -1,22 +1,75 @@
-﻿@model IEnumerable<FoodTracker.Models.Meal>
+﻿@model  FoodTracker.Views.ViewModels.DashboardVM
 
 @{
     ViewData["Title"] = "Meals";
 }
 
 
-<h1>Dashboard page</h1>
+<h2>Dashboard</h2>
 
-@foreach (var item in Model)
-{
-    <div>
-        <h3>@item.Name (@item.Type)</h3>
-        <p>Date Consumed: @item.DateConsumed.ToShortDateString()</p>
-        <p>Calories: @item.Calories</p>
-        <p>Fats: @item.Fats g</p>
-        <p>Carbohydrates: @item.Carbohydrates g</p>
-        <p>Proteins: @item.Proteins g</p>
-        <p>Sugars: @item.Sugars g</p>
-    </div>
-    <hr />
+<div>Range: @Model.From?.ToString("yyyy-MM-dd") - @Model.To?.ToString("yyyy-MM-dd")</div>
+
+<div>Total Meals: @Model.statsDTO.TotalMeals</div>
+<div>Total Calories: @Model.statsDTO.TotalCalories</div>
+<div>Average Price: @Model.statsDTO.AveragePrice</div>
+<div>Total Spent: @Model.statsDTO.TotalSpent</div>
+<div>Total Protein: @Model.statsDTO.TotalProteins</div>
+<div>Total Homemade Meals: @Model.statsDTO.TotalHomemadeMeals</div>
+<div>Total Eatout Meals: @Model.statsDTO.TotalEatoutMeals</div>
+
+<hr />
+
+<div id="meal-chart"></div>
+
+@section Scripts {
+    <script>
+
+        var homemadeCount = @Model.statsDTO.TotalHomemadeMeals;
+        var eatoutCount = @Model.statsDTO.TotalEatoutMeals;
+        var options = {
+            series: [homemadeCount, eatoutCount],
+            theme: {
+                monochrome: {
+                    enabled: true,
+                },
+            },
+            chart: {
+                width: 450,
+                type: 'pie',
+            },
+            labels: ['Homemade', 'Eat out'],
+            dataLabels: {
+                formatter: function (val, opts) {
+                    var count = opts.w.config.series[opts.seriesIndex];
+                    return count.toString();
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#meal-chart"), options);
+        chart.render();</script>
 }
+
+<hr />
+
+@foreach (var m in Model.meals)
+{
+    <span>@m.Name : @m.Type : @m.DateConsumed.ToShortDateString()</span>
+
+    <br/>
+    <span>@m.Recipe?.Name : </span
+    <span>@m.Recipe?.Instructions</span><br /><hr />
+}
+
+

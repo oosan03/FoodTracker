@@ -19,6 +19,7 @@ namespace FoodTracker.Services
         {
             return _db.Meals
                 .AsNoTracking()
+                .Include(m => m.Recipe)
                 .OrderByDescending(m => m.Id)
                 .ToListAsync(ct);
         }

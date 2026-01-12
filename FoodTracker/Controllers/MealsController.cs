@@ -9,14 +9,21 @@ using FoodTracker.Data;
 using FoodTracker.Models;
 using NuGet.Protocol.Plugins;
 using FoodTracker.Services;
+using FoodTracker.Views.ViewModels;
+using Humanizer;
 
 namespace FoodTracker.Controllers
 {
     public class MealsController : Controller
     {
         private readonly IMealService _mealService;
+        private readonly IMealDashboardService _mealDashboardService;
 
-        public MealsController(IMealService meals) => _mealService = meals;
+        public MealsController(IMealService meals, IMealDashboardService dash)
+        {
+            _mealService = meals;
+            _mealDashboardService = dash;
+        }
 
 
         // GET: Meals
@@ -119,11 +126,39 @@ namespace FoodTracker.Controllers
         // Start Dashboard statistic requests here
 
         // Get: Meals/Dashboard
-        public async Task<IActionResult> Dashboard(CancellationToken ct)
+        [HttpGet]
+        public async Task<IActionResult> Dashboard(DateTime? from, DateTime? to, CancellationToken ct)
         {
-            var items = await _mealService.GetThisWeeksMealsAsync(ct);
-            return View(items);
+            // Ensure from/to are set to week range if not provided
+            (from, to) = EnsureWeekRange(from, to);
+
+            var stats = await _mealDashboardService.GetMealStatsAsync(from, to, ct);
+            var allMeals = await _mealService.GetAllMealsAsync(ct);
+
+            var vm = new DashboardVM
+            {
+                statsDTO = stats,
+                meals = allMeals,
+                From = from,
+                To = to
+            };
+
+            return View(vm);
         }
 
+        private static (DateTime from, DateTime to) EnsureWeekRange(DateTime? from, DateTime? to)
+        {
+            if (from is not null && to is not null)
+            {
+                return (from.Value.Date, to.Value.Date);
+            }
+
+            var today = DateTime.Today;
+            var start = today.AddDays(-(int)today.DayOfWeek);
+            var endExlusive = start.AddDays(7);
+
+            return (start, endExlusive);
+
+        }
     }
 }
