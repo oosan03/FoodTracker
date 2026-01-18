@@ -9,36 +9,27 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FoodTracker.styles.css" asp-append-version="true" />
 </head>
-<body class="d-flex flex-column min-vh-100">
-    <header class="sticky-top">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-0">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Meals" asp-action="Index">Food Tracker</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Meals" asp-action="Dashboard">Dashboard</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body class="d-flex flex-column">
+
     <div class="container bg-dark main-container px-0 flex-grow-1 d-flex">
         <main role="main" class="flex-grow-1 pb-3 table-responsive bg-custom">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top app-footer text-light bg-dark">
-        <div class="container">
-            &copy; 2026 - FoodTracker
+    <nav class="bottom-nav p-1">
+        
+        <div class="">
+            <a class="btn nav-btn m-1">Home</a>
         </div>
-    </footer>
+        <div class="">
+            <a class="btn nav-btn m-1">Add</a>
+        </div>
+        <div class="">
+            <a class="btn nav-btn m-1 font-monospace">Stats</a>
+        </div>
+
+    </nav>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
