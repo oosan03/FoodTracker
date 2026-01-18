@@ -65,11 +65,11 @@
 
 @foreach (var m in Model.meals)
 {
-    <span>@m.Name : @m.Type : @m.DateConsumed.ToShortDateString()</span>
+    <span>@m.Name : @m.Type : <b>@m.DateConsumed.ToString("ddMMMyyyy").ToUpper()</b></span>
 
     <br/>
-    <span>@m.Recipe?.Name : </span
-    <span>@m.Recipe?.Instructions</span><br /><hr />
+    <span>@(m.Recipe?.Name ?? "N/A") : </span
+    <span>@(m.Recipe?.Instructions ?? "N/A")</span><br /><hr />
 }
 
 
